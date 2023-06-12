@@ -18,7 +18,7 @@ const CreatePost = () => {
     if(form.prompt) {
       try {
         setGeneratingImg(true);
-        const response = await fetch('https://dalle-social.onrender.com/api/v1/dalle/', {
+        const response = await fetch('https://dalle-social.onrender.com/api/v1/dalle', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -27,7 +27,6 @@ const CreatePost = () => {
         })
 
         const data = await response.json();
-        console.log(data)
         setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` })
       } catch (error) {
         alert(error);
